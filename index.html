@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Angular Website</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap">
+    <link rel="stylesheet" href="CSS.css">
+
+    <!-- Include AngularJS library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="myController">
+<h1 class="title">{{ pageTitle }}</h1>
+<div class="menu">
+    <div class="cutout-circle">
+        <div class="animated-skin-text">Animated Skin</div>
+    </div>
+<div class="button-container">
+    <button class="gradient-button">Switch</button>
+</div>
+    <ul>
+        <li class="menu-item">
+            <div class="slider-label">Layer Slider</div>
+            <label>
+                <input type="range" id="whiteStepSlider" min="0.100" max="0.500" step="0.001" value="0.138" class="slider">
+            </label>
+        </li>
+        <li class="menu-item">
+            <div class="slider-label">Line Intensity</div>
+            <label>
+                <input type="range" id="lineIntensitySlider" min="1.0" max="8.0" step="1.0" value="2.0" class="slider">
+            </label>
+        </li>
+        <li class="menu-item">
+            <div class="slider-label">Swirl Slider</div>
+            <label>
+                <input type="range" id="distanceSlider" min="1.0" max="12.0" step="0.1" value="3.85" class="slider">
+            </label>
+        </li>
+        <li class="menu-item">
+            <div class="color-label">Background Color</div>
+            <label for="redSlider">Red:</label>
+            <input class="color-slider" id="redSlider" max="255" min="0" type="range" value="255">
+            <label for="greenSlider">Green:</label>
+            <input id="greenSlider" type="range" min="0" max="255" value="255" class="color-slider">
+            <label for="blueSlider">Blue:</label>
+            <input id="blueSlider" type="range" min="0" max="255" value="255" class="color-slider">
+        </li>
+    </ul>
+</div>
+<div class="additional-circles">
+    <div class="black-circle"></div>
+    <div class="black-circle"></div>
+    <div class="black-circle"></div>
+</div>
+<div class="shader-container">
+    <canvas id="shaderCanvas" width="221" height="221"></canvas>
+</div>
+<!-- ShaderTwo container -->
+<div class="shader-two-container">
+    <canvas id="shaderTwoCanvas" width="180" height="180"></canvas>
+</div>
+<!-- ShaderThree container -->
+<div class="shader-three-container">
+    <canvas id="shaderThreeCanvas" width="183" height="183"></canvas>
+</div>
+<div class="shader-four-container">
+    <canvas id="shaderFourCanvas" width="183" height="183"></canvas>
+</div>
+
+<script src="Angular.js"></script>
+<script src="ShaderOne.js"></script>
+<script type="module" src="ShaderTwo.js"></script>
+<script type="module" src="ShaderThree.js"></script>
+<script type="module" src="ShaderFour.js"></script>
+
+<script type="module">
+    import ShaderTwo from './ShaderTwo.js';
+    import ShaderThree from './ShaderThree.js';
+    import ShaderThree from './ShaderFour.js';
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var shaderTwo = new ShaderTwo();
+        var shaderThree = new ShaderThree();
+        var shaderFour = new ShaderFour();
+
+        shaderTwo.init();
+        shaderThree.init();
+        shaderFour.init();
+    });
+</script>
+</body>
+</html>
